@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Run Kafka docker-compose.yml
+      uses: isbang/compose-action@v1.4.1
+    - name: Install go
+      uses: actions/setup-go@v3
+    - name: Run tests
+      run: go test -race -v ./...
