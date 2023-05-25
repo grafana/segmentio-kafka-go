@@ -38,11 +38,6 @@ type Batch struct {
 	// we get an EOF we do not get the lastOffset. So there is a mismatch
 	// between when we receive it and need to use it.
 	lastOffset int64
-
-	// makeKeyBytes is used to create a bytes slice for Message.Key with given length.
-	makeKeyBytes func(length int) []byte
-	// makeValBytes is used to create a bytes slice for Message.Value with given length.
-	makeValBytes func(length int) []byte
 }
 
 // Throttle gives the throttling duration applied by the kafka server on the
@@ -204,11 +199,11 @@ func (batch *Batch) ReadMessage() (Message, error) {
 
 	offset, timestamp, headers, err = batch.readMessage(
 		func(r *bufio.Reader, size int, nbytes int) (remain int, err error) {
-			msg.Key, remain, err = readIntoAllocatedBytes(r, size, nbytes, batch.makeKeyBytes)
+			msg.Key, remain, err = readNewBytes(r, size, nbytes)
 			return
 		},
 		func(r *bufio.Reader, size int, nbytes int) (remain int, err error) {
-			msg.Value, remain, err = readIntoAllocatedBytes(r, size, nbytes, batch.makeValBytes)
+			msg.Value, remain, err = readNewBytes(r, size, nbytes)
 			return
 		},
 	)
@@ -220,11 +215,11 @@ func (batch *Batch) ReadMessage() (Message, error) {
 		}
 		offset, timestamp, headers, err = batch.readMessage(
 			func(r *bufio.Reader, size int, nbytes int) (remain int, err error) {
-				msg.Key, remain, err = readIntoAllocatedBytes(r, size, nbytes, batch.makeKeyBytes)
+				msg.Key, remain, err = readNewBytes(r, size, nbytes)
 				return
 			},
 			func(r *bufio.Reader, size int, nbytes int) (remain int, err error) {
-				msg.Key, remain, err = readIntoAllocatedBytes(r, size, nbytes, batch.makeValBytes)
+				msg.Value, remain, err = readNewBytes(r, size, nbytes)
 				return
 			},
 		)
