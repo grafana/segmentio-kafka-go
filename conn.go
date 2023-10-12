@@ -863,7 +863,8 @@ func (c *Conn) ReadBatchWith(cfg ReadBatchConfig) *Batch {
 
 	var msgs *messageSetReader
 	if err == nil {
-		if highWaterMark == offset {
+		// See: https://github.com/segmentio/kafka-go/issues/1188
+		if highWaterMark == offset && remain == 0 {
 			msgs = &messageSetReader{empty: true}
 		} else {
 			msgs, err = newMessageSetReader(&c.rbuf, remain)
