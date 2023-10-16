@@ -468,6 +468,17 @@ type ReaderConfig struct {
 	// Default: 5s
 	JoinGroupBackoff time.Duration
 
+	// CoordinatorTimeout is the network timeout used when communicating with the consumer
+	// group coordinator.  This value should not be too small since errors
+	// communicating with the broker will generally cause a consumer group
+	// rebalance, and it's undesirable that a transient network error intoduce
+	// that overhead.  Similarly, it should not be too large or the consumer
+	// group may be slow to respond to the coordinator failing over to another
+	// broker.
+	//
+	// Default: 5s
+	CoordinatorTimeout time.Duration
+
 	// RetentionTime optionally sets the length of time the consumer group will be saved
 	// by the broker
 	//
@@ -736,6 +747,7 @@ func NewReader(config ReaderConfig) *Reader {
 			SessionTimeout:         r.config.SessionTimeout,
 			RebalanceTimeout:       r.config.RebalanceTimeout,
 			JoinGroupBackoff:       r.config.JoinGroupBackoff,
+			Timeout:                r.config.CoordinatorTimeout,
 			RetentionTime:          r.config.RetentionTime,
 			StartOffset:            r.config.StartOffset,
 			Logger:                 r.config.Logger,
