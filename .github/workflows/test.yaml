@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
     - name: Run Kafka docker-compose.yml
-      uses: isbang/compose-action@v1.4.1
+      uses: isbang/compose-action@9d0371f9eaa290a6b28f9b8d3030f571ecd7da97 # v1.4.1
     - name: Install go
-      uses: actions/setup-go@v3
+      uses: actions/setup-go@be3c94b385c4f180051c996d336f57a34c397495 # v3
     - name: Run tests
       run: go test -race -v ./...
       env:

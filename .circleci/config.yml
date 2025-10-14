@@ -2,7 +2,7 @@ version: 2
 jobs:
   lint:
     docker:
-      - image: golangci/golangci-lint:v1.45-alpine
+      - image: golangci/golangci-lint:v1.45-alpine@sha256:f785480652fef9878251e5f052ec0a2afc71005eb7c6817e3726de63cc49cd6d
     steps:
       - checkout
       - run: golangci-lint run
@@ -14,11 +14,11 @@ jobs:
     environment:
       KAFKA_VERSION: "0.10.1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:0.10.1.1
+    - image: wurstmeister/kafka:0.10.1.1@sha256:ce3ffc7579eaa492014de2f80790bb5da0fd99b2ff75a2cbb3df97535cb0fb9c
       ports:
       - 9092:9092
       - 9093:9093
@@ -64,11 +64,11 @@ jobs:
     environment:
       KAFKA_VERSION: "0.11.0"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.11-0.11.0.3
+    - image: wurstmeister/kafka:2.11-0.11.0.3@sha256:a21281476add6f1d565d121815568836e5ed7582271688a4f10fe8cbae3016eb
       ports:
       - 9092:9092
       - 9093:9093
@@ -96,11 +96,11 @@ jobs:
     environment:
       KAFKA_VERSION: "1.0.1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.11-1.0.1
+    - image: wurstmeister/kafka:2.11-1.0.1@sha256:c2b440baee0725cd8328bd173654f97c7099da48e43cf06d4fd111aecb69db98
       ports:
       - 9092:9092
       - 9093:9093
@@ -112,11 +112,11 @@ jobs:
     environment:
       KAFKA_VERSION: "1.1.1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.11-1.1.1
+    - image: wurstmeister/kafka:2.11-1.1.1@sha256:d9da48245eae1483ddac898837a1435492c4d4a30e9a50e88bddeccf9c164084
       ports:
       - 9092:9092
       - 9093:9093
@@ -128,11 +128,11 @@ jobs:
     environment:
       KAFKA_VERSION: "2.0.1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.12-2.0.1
+    - image: wurstmeister/kafka:2.12-2.0.1@sha256:0eff8247bee78321a6d9e31cd2fa3ea57b92a9e298388cfa8626e3d8010620f5
       ports:
       - 9092:9092
       - 9093:9093
@@ -147,11 +147,11 @@ jobs:
     environment:
       KAFKA_VERSION: "2.1.1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.12-2.1.1
+    - image: wurstmeister/kafka:2.12-2.1.1@sha256:b5eb1d48bde956035b0a7ee90c923beffe8b951c4766a81333b6744f90b3426f
       ports:
       - 9092:9092
       - 9093:9093
@@ -173,11 +173,11 @@ jobs:
     environment:
       KAFKA_VERSION: "2.2.2"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.12-2.2.2
+    - image: wurstmeister/kafka:2.12-2.2.2@sha256:fbb34f5f07e918daa37b2db7fb2e0f872953b5aa57212268f0c42e71ab760257
       ports:
       - 9092:9092
       - 9093:9093
@@ -190,11 +190,11 @@ jobs:
     environment:
       KAFKA_VERSION: "2.3.1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.12-2.3.1
+    - image: wurstmeister/kafka:2.12-2.3.1@sha256:0b22bb436ecde11e0db1ce84170b979ce7130e5f1b292b16eace548cd78d7d9e
       ports:
       - 9092:9092
       - 9093:9093
@@ -218,11 +218,11 @@ jobs:
       # TODO: Figure out why these are happening and fix them (they don't appear to be new).
       KAFKA_SKIP_NETTEST: "1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.12-2.4.1
+    - image: wurstmeister/kafka:2.12-2.4.1@sha256:21b9367ff68e379b196a9c1a0bb5dc6a51740e4f87c630d2c2d672e10c9e9de7
       ports:
       - 9092:9092
       - 9093:9093
@@ -246,11 +246,11 @@ jobs:
       # TODO: Figure out why these are happening and fix them (they don't appear to be new).
       KAFKA_SKIP_NETTEST: "1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.13-2.6.0
+    - image: wurstmeister/kafka:2.13-2.6.0@sha256:013f1e1977924a2bcd44ab727bccb55d08983d755d6466cde6ff7398affbe58c
       ports:
       - 9092:9092
       - 9093:9093
@@ -276,11 +276,11 @@ jobs:
       # TODO: Figure out why these are happening and fix them (they don't appear to be new).
       KAFKA_SKIP_NETTEST: "1"
     docker:
-    - image: circleci/golang
-    - image: wurstmeister/zookeeper
+    - image: circleci/golang@sha256:002228c9bb0e57b2e1ef6f277b436036b184699477fc75034a0b33f69da94402
+    - image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
       ports:
       - 2181:2181
-    - image: wurstmeister/kafka:2.13-2.7.1
+    - image: wurstmeister/kafka:2.13-2.7.1@sha256:0bb9640cd2ea84eb1dfb6bd4d4eeeab7555274305ab143356eb3d45162919bba
       ports:
       - 9092:9092
       - 9093:9093

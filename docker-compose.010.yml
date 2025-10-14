@@ -1,7 +1,7 @@
 version: "3"
 services:
   kafka:
-    image: wurstmeister/kafka:0.10.1.1
+    image: wurstmeister/kafka:0.10.1.1@sha256:ce3ffc7579eaa492014de2f80790bb5da0fd99b2ff75a2cbb3df97535cb0fb9c
     links:
     - zookeeper
     ports:
@@ -24,6 +24,6 @@ services:
         echo -e 'KafkaServer {\norg.apache.kafka.common.security.plain.PlainLoginModule required\n username="adminplain"\n password="admin-secret"\n user_adminplain="admin-secret";\n  };' > /opt/kafka/config/kafka_server_jaas.conf;
 
   zookeeper:
-    image: wurstmeister/zookeeper
+    image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
     ports:
     - 2181:2181

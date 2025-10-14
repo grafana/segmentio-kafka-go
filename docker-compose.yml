@@ -1,7 +1,7 @@
 version: "3"
 services:
   kafka:
-    image: wurstmeister/kafka:2.12-2.3.1
+    image: wurstmeister/kafka:2.12-2.3.1@sha256:0b22bb436ecde11e0db1ce84170b979ce7130e5f1b292b16eace548cd78d7d9e
     restart: on-failure:3
     links:
     - zookeeper
@@ -29,6 +29,6 @@ services:
         /opt/kafka/bin/kafka-configs.sh --zookeeper zookeeper:2181 --alter --add-config 'SCRAM-SHA-256=[password=admin-secret-256],SCRAM-SHA-512=[password=admin-secret-512]' --entity-type users --entity-name adminscram
 
   zookeeper:
-    image: wurstmeister/zookeeper
+    image: wurstmeister/zookeeper@sha256:7a7fd44a72104bfbd24a77844bad5fabc86485b036f988ea927d1780782a6680
     ports:
     - 2181:2181
